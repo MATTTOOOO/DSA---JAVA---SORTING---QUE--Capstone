@@ -1,6 +1,6 @@
 # AGENT.md
 
-Instructions for AI coding agents working on the **DSA Java Sorting & Queue Capstone** (IT2A Data Structures and Algorithms).
+Instructions for AI coding agents working on the **DSA Java Sorting & Queue Capstone** (IT2B Data Structures and Algorithms).
 
 The goal is a console-based Java application that solves a real-world problem using **manually implemented sorting algorithms** and a **FIFO queue**, written in a **procedural style (no OOP)**. The repository is the official submission and is graded against the rubric at the bottom of this file.
 
