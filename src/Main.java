@@ -52,7 +52,7 @@ public class Main {
     private static void addPatient() {
         String name = readNonEmpty("Patient name: ");
         int age = readInt("Age (0-120): ", 0, 120);
-        String time = readNonEmpty("Appointment time (e.g. 09:30 AM): ");
+        String time = readAppointmentTime();
         int id = nextPatientId++;
         names.add(name);
         ages.add(age);
@@ -177,13 +177,48 @@ public class Main {
     private static int compareRecords(int left, int right, int field) {
         if (field == 1) return names.get(left).compareToIgnoreCase(names.get(right));
         if (field == 2) return Integer.compare(ages.get(left), ages.get(right));
-        return appointmentTimes.get(left).compareToIgnoreCase(appointmentTimes.get(right));
+        return Integer.compare(parseAppointmentMinutes(appointmentTimes.get(left)),
+                parseAppointmentMinutes(appointmentTimes.get(right)));
     }
 
     private static int compareValues(int index, String name, int age, String time, int field) {
         if (field == 1) return names.get(index).compareToIgnoreCase(name);
         if (field == 2) return Integer.compare(ages.get(index), age);
-        return appointmentTimes.get(index).compareToIgnoreCase(time);
+        return Integer.compare(parseAppointmentMinutes(appointmentTimes.get(index)), parseAppointmentMinutes(time));
+    }
+
+    private static String readAppointmentTime() {
+        while (true) {
+            System.out.print("Appointment time (e.g. 09:30 AM or 14:30): ");
+            String value = INPUT.nextLine().trim();
+            if (parseAppointmentMinutes(value) >= 0) return value;
+            System.out.println("Enter a valid time as H:MM, HH:MM, or with AM/PM (minutes 00-59).");
+        }
+    }
+
+    // Convert supported 12-hour or 24-hour input to minutes after midnight so
+    // sorting follows clock order instead of comparing the displayed text.
+    private static int parseAppointmentMinutes(String value) {
+        String normalized = value.trim().toUpperCase().replaceAll("\\s+", "");
+        boolean hasAm = normalized.endsWith("AM");
+        boolean hasPm = normalized.endsWith("PM");
+        boolean hasMeridiem = hasAm || hasPm;
+        if (hasMeridiem) normalized = normalized.substring(0, normalized.length() - 2);
+
+        int colon = normalized.indexOf(':');
+        if (colon <= 0 || colon != normalized.lastIndexOf(':') || colon == normalized.length() - 1) return -1;
+        try {
+            int hour = Integer.parseInt(normalized.substring(0, colon));
+            int minute = Integer.parseInt(normalized.substring(colon + 1));
+            if (minute < 0 || minute > 59) return -1;
+            if (hasMeridiem) {
+                if (hour < 1 || hour > 12) return -1;
+                hour = hour % 12 + (hasPm ? 12 : 0);
+            } else if (hour < 0 || hour > 23) return -1;
+            return hour * 60 + minute;
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     private static void swapRecords(int a, int b) {

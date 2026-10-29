@@ -14,7 +14,7 @@ This console application helps a small clinic keep patient details and manage th
 
 ## Use Cases and Features
 
-- Add patient records with an automatically assigned patient ID, name, age, and appointment time.
+- Add patient records with an automatically assigned patient ID, name, age, and appointment time (`H:MM`, `HH:MM`, optionally with AM/PM).
 - Display all records and search by full or partial name or patient ID.
 - Remove a patient record; any matching waiting queue entry is removed too.
 - Enqueue a registered patient, view the next patient, display/check the queue, and call the next patient.
@@ -31,11 +31,11 @@ The consultation queue is a `Queue<Integer>` backed by `LinkedList`; it stores p
 
 ### Bubble Sort
 
-Bubble Sort compares neighboring records and swaps them when their selected field is out of order. Each pass moves a largest remaining value to the end; an early-exit check stops when a pass makes no swaps. It is simple for a small clinic's record list and makes each exchange easy to follow. The app can use it to order records by name, age, or appointment-time text.
+Bubble Sort compares neighboring records and swaps them when their selected field is out of order. Each pass moves a largest remaining value to the end; an early-exit check stops when a pass makes no swaps. It is simple for a small clinic's record list and makes each exchange easy to follow. The app can use it to order records by name, age, or appointment time in clock order.
 
 ### Insertion Sort
 
-Insertion Sort grows a sorted prefix by taking each next record and shifting larger records right until it fits. It works well for small lists and lists that are already partly ordered. The app offers the same three sort fields. Both implementations operate directly on the parallel lists and use no built-in sorting method.
+Insertion Sort grows a sorted prefix by taking each next record and shifting larger records right until it fits. It works well for small lists and lists that are already partly ordered. The app offers the same three sort fields. Appointment times are converted to minutes after midnight for comparisons, so times such as `9:00 AM` and `10:00 AM` sort chronologically. Both implementations operate directly on the parallel lists and use no built-in sorting method.
 
 ## How to Run the Program
 
