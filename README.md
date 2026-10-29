@@ -60,6 +60,7 @@ The following captures were provided and placed in `screenshots/`:
 | [queue-enqueue.png](screenshots/queue-enqueue.png) | Enqueueing patient ID 1002. |
 | [queue-dequeue.png](screenshots/queue-dequeue.png) | Calling patient ID 1002. |
 | [queue-display-fifo.png](screenshots/queue-display-fifo.png) | Queue displayed front to back with two patients. |
+| [queue-peek.png](screenshots/queue-peek.png) | Peek shows KAGE (ID 1006) as the next patient. |
 | [fifo-queue.png](screenshots/fifo-queue.png) | Queue order with patient ID 1004 first. |
 | [fifo-next-called.png](screenshots/fifo-next-called.png) | The next call is patient ID 1004, matching the queue front shown alongside. |
 | [bubble-sort.png](screenshots/bubble-sort.png) | Bubble Sort by name, before and after. |
@@ -67,6 +68,4 @@ The following captures were provided and placed in `screenshots/`:
 | [insertion-sort.png](screenshots/insertion-sort.png) | Insertion Sort by age, before and after. |
 | [input-validation.png](screenshots/input-validation.png) | Invalid ID input rejected and prompt repeated. |
 
-The add/display and FIFO captures are now included. One screenshot is still needed for the full queue-operations capture:
-
-- **Peek operation:** capture the app showing the next patient with the peek option. For the complete queue-operations screenshot, include enqueue, peek, display, and dequeue output.
+The provided captures cover the main menu, adding and displaying records, enqueue, peek, display, dequeue, FIFO behavior, both sorts, and input validation.
