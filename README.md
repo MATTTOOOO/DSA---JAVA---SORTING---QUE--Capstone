@@ -55,16 +55,18 @@ The following captures were provided and placed in `screenshots/`:
 | Screenshot | What it shows |
 |---|---|
 | [main-menu.png](screenshots/main-menu.png) | Main menu. |
+| [add-patient.png](screenshots/add-patient.png) | Adding patient ID 1007. |
+| [display-patients.png](screenshots/display-patients.png) | Displaying the stored patient records, including ID 1007. |
 | [queue-enqueue.png](screenshots/queue-enqueue.png) | Enqueueing patient ID 1002. |
 | [queue-dequeue.png](screenshots/queue-dequeue.png) | Calling patient ID 1002. |
 | [queue-display-fifo.png](screenshots/queue-display-fifo.png) | Queue displayed front to back with two patients. |
+| [fifo-queue.png](screenshots/fifo-queue.png) | Queue order with patient ID 1004 first. |
+| [fifo-next-called.png](screenshots/fifo-next-called.png) | The next call is patient ID 1004, matching the queue front shown alongside. |
 | [bubble-sort.png](screenshots/bubble-sort.png) | Bubble Sort by name, before and after. |
 | [bubble-sort-single-record.png](screenshots/bubble-sort-single-record.png) | Bubble Sort output with a single record. |
 | [insertion-sort.png](screenshots/insertion-sort.png) | Insertion Sort by age, before and after. |
 | [input-validation.png](screenshots/input-validation.png) | Invalid ID input rejected and prompt repeated. |
 
-Still needed for the full screenshot checklist:
+The add/display and FIFO captures are now included. One screenshot is still needed for the full queue-operations capture:
 
-- **Adding and displaying records:** capture adding at least two patients and then displaying the patient records.
-- **FIFO proof:** capture one continuous session where at least two identified patients are enqueued in order and then dequeued in that same order. The supplied enqueue, dequeue, and queue-display images do not establish that they came from one continuous session.
-- **Peek operation:** optionally include the next-patient preview in the queue operations capture.
+- **Peek operation:** capture the app showing the next patient with the peek option. For the complete queue-operations screenshot, include enqueue, peek, display, and dequeue output.
